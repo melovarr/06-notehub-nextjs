@@ -1,11 +1,3 @@
-// export default function Error() {
-//   return (
-//     <div>
-//       <p>There was some error.</p>
-//     </div>
-//   );
-// }
-
 "use client";
 
 type Props = {

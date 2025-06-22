@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import css from "./App.module.css";
+import css from "./NotesPage.module.css";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import NoteList from "@/components/NoteList/NoteList";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
@@ -10,7 +10,6 @@ import Pagination from "@/components/Pagination/Pagination";
 import NoteModal from "@/components/NoteModal/NoteModal";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import { useDebounce } from "use-debounce";
-// import Logo from "@/components/Logo/Logo";
 import { FetchNotesResponse } from "@/types/note";
 
 interface NotesClientProps {
@@ -22,7 +21,7 @@ export default function NotesClient({ initialNotesData }: NotesClientProps) {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  //FETCHING & SEARCHING NOTES
+  //-----------------------FETCHING & SEARCHING NOTES
   const [debounseInputValue] = useDebounce(inputValue, 500);
 
   const notes = useQuery({
@@ -43,13 +42,10 @@ export default function NotesClient({ initialNotesData }: NotesClientProps) {
   return (
     <>
       <div className={css.app}>
-        {/* -------HEADER ELEMENTS--------- */}
-
         <header className={css.toolbar}>
           <div>
             <SearchBox value={inputValue} onSearch={handleSearchChange} />
           </div>
-          {/* <Logo /> */}
 
           <button
             onClick={() => setIsModalOpen(true)}
@@ -59,8 +55,6 @@ export default function NotesClient({ initialNotesData }: NotesClientProps) {
           </button>
         </header>
 
-        {/* -------NOTELIST--------- */}
-
         <NoteList notes={notes.data?.notes ?? []} />
         {totalPages > 0 && (
           <Pagination
@@ -69,8 +63,6 @@ export default function NotesClient({ initialNotesData }: NotesClientProps) {
             onPageChange={setCurrentPage}
           />
         )}
-
-        {/* -------NOTE MODAL--------- */}
 
         {isModalOpen && (
           <NoteModal onClose={() => setIsModalOpen(false)}>
