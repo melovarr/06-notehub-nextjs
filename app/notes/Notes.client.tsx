@@ -8,7 +8,6 @@ import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { fetchNotes } from "@/lib/api";
 import Pagination from "@/components/Pagination/Pagination";
 import NoteModal from "@/components/NoteModal/NoteModal";
-import NoteForm from "@/components/NoteForm/NoteForm";
 import { useDebounce } from "use-debounce";
 import { FetchNotesResponse } from "@/lib/api";
 
@@ -64,11 +63,7 @@ export default function NotesClient({ initialNotesData }: NotesClientProps) {
           />
         )}
 
-        {isModalOpen && (
-          <NoteModal onClose={() => setIsModalOpen(false)}>
-            <NoteForm onClose={() => setIsModalOpen(false)} />
-          </NoteModal>
-        )}
+        {isModalOpen && <NoteModal onClose={() => setIsModalOpen(false)} />}
       </div>
     </>
   );
