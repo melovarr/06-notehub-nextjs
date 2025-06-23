@@ -5,12 +5,9 @@ import NoteForm from "../NoteForm/NoteForm";
 
 interface NoteModalProps {
   onClose: () => void;
-  children: React.ReactNode;
 }
 
-export default function NoteModal({
-  onClose,
-}: NoteModalProps): React.ReactPortal {
+export default function NoteModal({ onClose }: NoteModalProps) {
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       onClose();
