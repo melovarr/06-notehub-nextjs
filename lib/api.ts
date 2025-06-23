@@ -1,11 +1,16 @@
 import axios from "axios";
-import type { NewNoteData, Note, FetchNotesResponse } from "../types/note";
+import type { NewNoteData, Note } from "../types/note";
 
 axios.defaults.baseURL = "https://notehub-public.goit.study/api";
 
 const myKey = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
 if (!myKey) {
   throw new Error("TOKEN IS MISSING");
+}
+
+export interface FetchNotesResponse {
+  notes: Note[];
+  totalPages: number;
 }
 
 interface FetchNotesParams {
