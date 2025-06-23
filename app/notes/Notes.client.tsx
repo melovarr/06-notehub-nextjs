@@ -10,7 +10,7 @@ import Pagination from "@/components/Pagination/Pagination";
 import NoteModal from "@/components/NoteModal/NoteModal";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import { useDebounce } from "use-debounce";
-import { FetchNotesResponse } from "@/types/note";
+import { FetchNotesResponse } from "@/lib/api";
 
 interface NotesClientProps {
   initialNotesData: FetchNotesResponse;
